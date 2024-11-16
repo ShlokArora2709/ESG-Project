@@ -4,6 +4,7 @@ This project is designed to automate the process of collecting ESG (Environmenta
 
 1. **`scrapping_script.py`** - A Selenium-based web scraper that collects ESG ratings data for companies from the MSCI website.
 2. **`article Scrapping.ipynb`** - An asynchronous Python notebook that searches for online articles related to ESG factors for each company, providing deeper insights into each ESG category.
+3. **`Model_training.ipynb`** - This notebook focuses on fine-tuning a multilingual BERT (mBERT) model to classify ESG-related text into specific categories (Environmental, Social, Governance). 
 
 ---
 
@@ -34,6 +35,34 @@ The notebook collects additional data on ESG-related news articles for each comp
 
 This notebook helps provide a richer narrative for each company's ESG performance by exploring public sentiment and news on each factor.
 
+### 3. `model_training.ipynb`
+
+This notebook focuses on fine-tuning a multilingual BERT (mBERT) model to classify ESG-related text into specific categories (Environmental, Social, Governance). The goal is to analyze and predict ESG performance for companies based on scraped articles and reports.
+
+### Key Steps in the Notebook:
+
+- **Data Preprocessing**: 
+  - Clean and preprocess the ESG-related articles and ratings data.
+  - Tokenize the text using the mBERT tokenizer, ensuring padding and truncation to maintain consistent input lengths.
+
+- **Model Architecture**: 
+  - Fine-tune the mBERT model, leveraging its multilingual capabilities for diverse textual sources.
+  - Add a classification head to predict specific ESG categories based on the input text.
+
+- **Training Loop**:
+  - Implement a PyTorch-based training loop.
+  - Use cross-entropy loss for multi-class classification.
+  - Optimize the model using the AdamW optimizer with learning rate scheduling.
+
+- **Validation and Metrics**:
+  - Evaluate the model on a separate validation dataset to measure accuracy, precision, recall, and F1-score.
+  - Visualize training and validation performance to ensure the model's robustness.
+
+- **Inference**:
+  - Apply the fine-tuned model to unseen articles and reports, categorizing them into Environmental, Social, or Governance.
+
 ---
 
-Together, these two scripts provide a comprehensive view of companies' ESG standings: one collects standardized ratings, while the other gathers recent discussions and news articles for a well-rounded analysis.
+### Final Output:
+The combination of the scraped ESG ratings, online articles, and predictions from the fine-tuned mBERT model provides a comprehensive ESG analysis system that integrates both quantitative metrics and qualitative insights.
+
